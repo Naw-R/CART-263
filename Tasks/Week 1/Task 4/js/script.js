@@ -17,9 +17,9 @@
 
 "use strict";
 
-let rect1X, rect1Y, rect1W, rect1H;
-let rect2X, rect2Y, rect2W, rect2H;
-let rect3X, rect3Y, rect3W, rect3H;
+let rect1X, rect1Y, rect1W;
+let rect2X, rect2Y, rect2W;
+let rect3X, rect3Y, rect3W;
 
 let rect1Color, rect2Color, rect3Color;
 
@@ -30,9 +30,9 @@ function setup() {
     createCanvas(innerWidth, innerHeight);
 
     // Define positions and sizes for each rectangle
-    rect1W = width / 3; rect1H = height; rect1X = 0; rect1Y = 0;
-    rect2W = width / 3; rect2H = height; rect2X = width / 3; rect2Y = 0;
-    rect3W = width / 3; rect3H = height; rect3X = (2 * width) / 3; rect3Y = 0;
+    rect1W = width / 3; rect1X = 0; rect1Y = 0;
+    rect2W = width / 3; rect2X = width / 3; rect2Y = 0;
+    rect3W = width / 3; rect3X = (2 * width) / 3; rect3Y = 0;
 
     // Initial colors for rectangles (different shades of blue)
     rect1Color = { r: 0, g: 0, b: 255 };
@@ -52,7 +52,7 @@ function draw() {
     } else {
         fill(rect1Color.r, rect1Color.g, rect1Color.b);
     }
-    rect(rect1X, rect1Y, rect1W, rect1H);
+    rect(rect1X, rect1Y, rect1W, height);
 
     // Check if the mouse is over the second rectangle
     if (mouseX >= rect2X && mouseX < rect2X + rect2W) {
@@ -60,7 +60,7 @@ function draw() {
     } else {
         fill(rect2Color.r, rect2Color.g, rect2Color.b);
     }
-    rect(rect2X, rect2Y, rect2W, rect2H);
+    rect(rect2X, rect2Y, rect2W, height);
 
     // Check if the mouse is over the third rectangle
     if (mouseX >= rect3X && mouseX < rect3X + rect3W) {
@@ -68,5 +68,5 @@ function draw() {
     } else {
         fill(rect3Color.r, rect3Color.g, rect3Color.b);
     }
-    rect(rect3X, rect3Y, rect3W, rect3H);
+    rect(rect3X, rect3Y, rect3W, height);
 }
