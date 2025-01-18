@@ -26,14 +26,97 @@
  * --------------------------------
  * CREATED BY : Rowan Nasser
  */
-
 "use strict";
 
-function setup() {
-    console.log("go")
+let counter = 0;
 
+// Orange square properties
+let orangeSquare = {
+    x: 50,
+    y: 50,
+    w: 50,
+    h: 50,
+    color: { r: 255, g: 165, b: 0 } // Orange color
+};
+
+// Red square properties
+let redSquare = {
+    x: 120,
+    y: 50,
+    w: 50,
+    h: 50,
+    color: { r: 255, g: 0, b: 0 } // Red color
+};
+
+// Ellipse properties
+let radius = 100; // Increased starting radius
+let ellipseAlpha = 100; // Initial alpha value
+
+function setup() {
+    console.log("go");
+    createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
+    background(0); // Make background black
 
+    // Display the orange and red squares
+    displaySquare(orangeSquare);
+    displaySquare(redSquare);
+
+    // Check counter limits and draw ellipses
+    if (counter >= 1 && counter <= 10) {
+        let i = 0;
+        let currentRadius = radius; // Start with the base radius
+
+        for (let i = 0; i < counter; i++) {
+            drawCircle(width / 2, height / 2, currentRadius, ellipseAlpha);
+            currentRadius += 50; // Increase radius for each circle
+            ellipseAlpha += 5;         // Increase alpha for each circle
+        }
+
+        // Reset  to its initial value for the next frame
+        ellipseAlpha = 100;
+    }
 }
+
+// Function to display a square (handles hover and click highlighting)
+function displaySquare(square) {
+    push();
+    if (checkCollisionWithSquare(square)) {
+        fill(square.color.r + 50, square.color.g + 50, square.color.b + 50); // Lighter color on hover
+    } else {
+        fill(square.color.r, square.color.g, square.color.b);
+    }
+    noStroke();
+    rect(square.x, square.y, square.w, square.h);
+    pop();
+}
+
+// Function to check if the mouse is inside a square
+function checkCollisionWithSquare(square) {
+    return mouseX >= square.x &&
+        mouseX <= square.x + square.w &&
+        mouseY >= square.y &&
+        mouseY <= square.y + square.h;
+}
+
+// Function to draw a single circle
+function drawCircle(x, y, radius, alpha) {
+    push();
+    noStroke();
+    fill(255, 255, 255, alpha); // White with alpha transparency
+    ellipse(x, y, radius);
+    pop();
+}
+
+function mousePressed() {
+    if (checkCollisionWithSquare(orangeSquare)) {
+        counter++;
+    }
+    if (checkCollisionWithSquare(redSquare)) {
+        counter--;
+    }
+    counter = constrain(counter, 0, 10); // Ensure counter stays between 0 and 10
+}
+
