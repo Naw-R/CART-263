@@ -7,50 +7,130 @@ console.log("we are a go!")
 /*** START PART ONE ACCESS */ 
 /* 1: all paragraph elements */
 /***CODE */
+    const allParagraphs = document.querySelectorAll("p");
+    console.log(allParagraphs);
 /***OUTPUT: 
- * 
+ * [Log] NodeList (9) (script.js, line 11)
+0
+<p id="1">…</p>
+1
+<p id="2" class="img-descript">…</p>
+2
+<p id="3" class="img-descript">…</p>
+3
+<p id="4" class="img-descript">…</p>
+4
+<p id="5" class="img-descript">…</p>
+5
+<p id="6" class="img-descript">…</p>
+6
+<p id="7" class="img-descript">…</p>
+7
+<p id="8" class="img-descript">…</p>
+8
+<p id="9" class="img-descript">…</p>
+
+NodeList Prototype
  */
 
 
 /*************************************** */
 /* 2: only the first paragraph element */
 /***CODE */
+    const firstParagraph = document.querySelector("p");
+    console.log(firstParagraph);
 /***OUTPUT: 
- * 
+ * [Log] <p id="1"> (script.js, line 21)
+"
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias perspiciatis blanditiis, et
+                laborum praesentium earum. Enim facere, quia commodi voluptate, quis asperiores, pariatur ducimus
+                officiis non
+                quasi officia sit veniam!
+            "
+</p>
  */
 
 
 /*************************************** */
 /* 3: all elements with the class inner-container */
 /***CODE */
+    const allInnerContainers = document.querySelectorAll(".inner-container");
+    console.log(allInnerContainers);
 /***OUTPUT: 
- * 
+ * [Log] NodeList (8) (script.js, line 58)
+0
+<div class="inner-container">…</div>
+1
+<div class="inner-container">…</div>
+2
+<div class="inner-container">…</div>
+3
+<div class="inner-container">…</div>
+4
+<div class="inner-container">…</div>
+5
+<div class="inner-container">…</div>
+6
+<div class="inner-container">…</div>
+7
+<div class="inner-container">…</div>
+
+NodeList Prototype
+
  */
 
 
 /*************************************** */
 /* 4: the last image element inside the element that has the class img-container */
 /***CODE */
+    const lastImageInImgContainer = document.querySelectorAll(".img-container img:last-of-type");
+    console.log(lastImageInImgContainer[lastImageInImgContainer.length - 1]);
+
 /***OUTPUT: 
- * 
+ * [Log] <img class="img-image" src="task-1-images/seventeen.png"> (script.js, line 87)
  */
 
 
 /*************************************** */
-/* 5A: all h2 elements */
-/* 5B: length of the list in 5A */
-/* 5C: the text content of the first element in the list from 5A */
+/* 5: Code */
 /***CODE */
-/***OUTPUT: 
- * 
+/* 5A: all h2 elements */
+    const allH2Elements = document.querySelectorAll("h2");
+    console.log(allH2Elements);
+    /***OUTPUT: 
+     * [Log] NodeList [<h2>] (1) (script.js, line 99)
+     */
+
+/* 5B: length of the list in 5A */
+    console.log(allH2Elements.length);
+    /***OUTPUT:
+ * [Log] 1 (script.js, line 105)
  */
+
+/* 5C: the text content of the first element in the list from 5A */
+    console.log(allH2Elements[0].textContent);
+    /***OUTPUT:
+ * [Log]  The header of this fancy page (script.js, line 111)
+ */
+
 
 
 /*************************************** */
 /* 6: the element with id name parent */
 /***CODE */
+    const parentElement = document.getElementById("parent");
+    console.log(parentElement);
 /***OUTPUT: 
- * 
+ * [Log] <section id="parent"> (script.js, line 122)
+<div class="inner-container">…</div>
+<div class="inner-container">…</div>
+<div class="inner-container">…</div>
+<div class="inner-container">…</div>
+<div class="inner-container">…</div>
+<div class="inner-container">…</div>
+<div class="inner-container">…</div>
+<div class="inner-container">…</div>
+</section>
  */
 
 /*************************************** */
