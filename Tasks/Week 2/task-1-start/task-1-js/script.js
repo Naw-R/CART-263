@@ -7,8 +7,8 @@ console.log("we are a go!")
 /*** START PART ONE ACCESS */ 
 /* 1: all paragraph elements */
 /***CODE */
-    const allParagraphs = document.querySelectorAll("p");
-    console.log(allParagraphs);
+    // const allParagraphs = document.querySelectorAll("p");
+    // console.log(allParagraphs);
 /***OUTPUT: 
  * [Log] NodeList (9) (script.js, line 11)
 0
@@ -37,8 +37,8 @@ NodeList Prototype
 /*************************************** */
 /* 2: only the first paragraph element */
 /***CODE */
-    const firstParagraph = document.querySelector("p");
-    console.log(firstParagraph);
+    // const firstParagraph = document.querySelector("p");
+    // console.log(firstParagraph);
 /***OUTPUT: 
  * [Log] <p id="1"> (script.js, line 21)
 "
@@ -54,8 +54,8 @@ NodeList Prototype
 /*************************************** */
 /* 3: all elements with the class inner-container */
 /***CODE */
-    const allInnerContainers = document.querySelectorAll(".inner-container");
-    console.log(allInnerContainers);
+    // const allInnerContainers = document.querySelectorAll(".inner-container");
+    // console.log(allInnerContainers);
 /***OUTPUT: 
  * [Log] NodeList (8) (script.js, line 58)
 0
@@ -83,8 +83,8 @@ NodeList Prototype
 /*************************************** */
 /* 4: the last image element inside the element that has the class img-container */
 /***CODE */
-    const lastImageInImgContainer = document.querySelectorAll(".img-container img:last-of-type");
-    console.log(lastImageInImgContainer[lastImageInImgContainer.length - 1]);
+    // const lastImageInImgContainer = document.querySelectorAll(".img-container img:last-of-type");
+    // console.log(lastImageInImgContainer[lastImageInImgContainer.length - 1]);
 
 /***OUTPUT: 
  * [Log] <img class="img-image" src="task-1-images/seventeen.png"> (script.js, line 87)
@@ -95,20 +95,20 @@ NodeList Prototype
 /* 5: Code */
 /***CODE */
 /* 5A: all h2 elements */
-    const allH2Elements = document.querySelectorAll("h2");
-    console.log(allH2Elements);
+    // const allH2Elements = document.querySelectorAll("h2");
+    // console.log(allH2Elements);
     /***OUTPUT: 
      * [Log] NodeList [<h2>] (1) (script.js, line 99)
      */
 
 /* 5B: length of the list in 5A */
-    console.log(allH2Elements.length);
+    // console.log(allH2Elements.length);
     /***OUTPUT:
  * [Log] 1 (script.js, line 105)
  */
 
 /* 5C: the text content of the first element in the list from 5A */
-    console.log(allH2Elements[0].textContent);
+    // console.log(allH2Elements[0].textContent);
     /***OUTPUT:
  * [Log]  The header of this fancy page (script.js, line 111)
  */
@@ -118,8 +118,8 @@ NodeList Prototype
 /*************************************** */
 /* 6: the element with id name parent */
 /***CODE */
-    const parentElement = document.getElementById("parent");
-    console.log(parentElement);
+    // const parentElement = document.getElementById("parent");
+    // console.log(parentElement);
 /***OUTPUT: 
  * [Log] <section id="parent"> (script.js, line 122)
 <div class="inner-container">…</div>
@@ -142,30 +142,49 @@ NodeList Prototype
 /*************************************** */
 /* 1: Select the first paragraph and replace the text within the paragraph... */
 /***CODE */
+    const firstParagraph = document.querySelector("p");
+    firstParagraph.textContent = `New text in paragraph one: text changed by Rowan on the following date: ${new Date().toLocaleDateString()}`;
+    console.log(firstParagraph);
 /*************************************** */
 /* 2: Select all elements in the HTML that have the class name content-container
  and change the background color ... of first and second ...*/
 /***CODE */
+    const contentContainers = document.querySelectorAll(".content-container");
+    contentContainers[0].style.backgroundColor = "orange";
+    contentContainers[1].style.backgroundColor = "purple";
+    console.log(contentContainers);
 
 /*************************************** */
 /* 3: Change the src element of the first image element on the page to be ...
 /***CODE */
+const firstImage = document.querySelector("img");
+firstImage.src = "task-1-images/seven.png";
+console.log(firstImage);
 
 /*************************************** */
 /* 4: Select the third paragraph element on the page and 
 replace the content (within the paragraph) to be an h2 element which contains the text `TEST 123`
 /***CODE */
+    const thirdParagraph = document.querySelectorAll("p")[2];
+    thirdParagraph.innerHTML = "<h2>TEST 123</h2>";
+    console.log(thirdParagraph);
 
 /*************************************** */
 /* 5: Select the fourth paragraph element on the page and 
 add to the existing content an h2 element containing the text `TEST 123`
 /***CODE */
+    const fourthParagraph = document.querySelectorAll("p")[3];
+    fourthParagraph.innerHTML += "<h2>TEST 123</h2>";
+    console.log(fourthParagraph);
 
 /*************************************** */
 /* 6: Select the fifth paragraph element on the page and add to the existing content 
 an img element that holds `one.png`, and add the class newStyle to said paragraph element.
 /***CODE */
-
+    const fifthParagraph = document.querySelectorAll("p")[4];
+    fifthParagraph.innerHTML += '<img src="task-1-images/one.png">';
+    fifthParagraph.classList.add("newStyle");
+    console.log(fifthParagraph);
 
 /*************************************** */
 /* 7: Add the following array variable: let colors = ['red','blue','green','orange'];, 
@@ -175,7 +194,13 @@ assign the element from innerContainers variable with the same index
 (i.e. colors[0] should be allocated to the first innerContainers element, colors[1] to the second, etc ...) 
 a background using that color.
 /***CODE */
-
+    let colors = ["red", "blue", "green", "orange"];
+    const innerContainers = document.querySelectorAll(".inner-container");
+    for (let i = 0; i < colors.length; i++) {
+        innerContainers[i].style.backgroundColor = colors[i];
+    }
+    console.log(innerContainers);
+    
 /*************************************** */
 /*** END PART TWO MODIFY */ 
 
