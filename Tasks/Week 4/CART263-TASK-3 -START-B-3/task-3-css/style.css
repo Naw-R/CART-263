@@ -100,7 +100,24 @@ body{
     color:white;
     background:rgba(246, 15, 142,1.0);
   }
+/*CSS Team A**/
+.TEAM_A_Button {
+  width: 36px;
+  height: 25px;
+  background-color: rgb(34, 29, 41);
+  position: absolute;
+  color: white;
+  text-align: center;
+  padding-top: 4px;
+  font-size: 12px;
+  margin: 4px;
+}
 
+.TEAM_A_Button:hover {
+  background-color: rgb(30, 168, 223);
+  cursor: pointer;
+
+}
 /*CSS TEAM H**/
 
 .TEAM_H_box{
