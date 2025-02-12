@@ -185,6 +185,62 @@ function setup_A() {
    * **/
   function aniB(parentCanvas) {
     console.log("in B");
+
+    // Get the bounding box of the parent container
+    let boundingBoxParent = parentCanvas.getBoundingClientRect();
+    console.log(boundingBoxParent);
+
+    // Create a grid of cells with modified colors and animation behavior
+    for (let i = 20; i < boundingBoxParent.height; i += 40) {
+      for (let j = 20; j < boundingBoxParent.width; j += 40) {
+        let rect = document.createElement("div");
+        rect.classList.add("TEAM_A_h_cell");
+        parentCanvas.appendChild(rect);
+        rect.style.position = "absolute";
+        rect.style.left = `${j}px`;
+        rect.style.top = `${i}px`;
+        rect.style.width = "30px";
+        rect.style.height = "30px";
+        rect.style.opacity = 1;
+        rect.style.border = "1px solid white";
+
+        // Assign random colors
+        let colors = ["cyan", "magenta", "yellow", "lime", "blue", "red"];
+        rect.style.background = colors[Math.floor(Math.random() * colors.length)];
+        rect.setAttribute("isactive", "false");
+
+        // Add click event listener to each div
+        rect.addEventListener("click", clickEventHandlerOnRec);
+      }
+    }
+
+    /****** Callback for clicking on a rect in the grid **********/
+    function clickEventHandlerOnRec() {
+      if (this.getAttribute("isactive") === "false") {
+        let intervalRef = window.setInterval(opacityChange, 50); // Faster fade out
+        let upInterval = null;
+        this.setAttribute("isactive", "true");
+        let self = this;
+
+        function opacityChange() {
+          self.style.opacity = parseFloat(self.style.opacity) - 0.05;
+
+          if (parseFloat(self.style.opacity) <= 0) {
+            clearInterval(intervalRef);
+            upInterval = setInterval(opacityChangeII, 50); // Faster fade in
+          }
+        }
+
+        function opacityChangeII() {
+          self.style.opacity = parseFloat(self.style.opacity) + 0.05;
+
+          if (parseFloat(self.style.opacity) >= 1) {
+            clearInterval(upInterval);
+            self.setAttribute("isactive", "false");
+          }
+        }
+      }
+    }
   }
   /**************** ANI C ************************************ */
   /** PUT ALL YOUR CODE FOR INTERACTIVE PATTERN C INSIDE  HERE */
