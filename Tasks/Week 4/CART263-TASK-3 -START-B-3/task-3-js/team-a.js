@@ -263,24 +263,57 @@ function setup_A() {
   function aniC(parentCanvas) {
 
     console.log("in C");
+
+    let p = document.createElement("div");
+    p.classList.add("TEAM_A_h_circle");
+    parentCanvas.appendChild(p);
+
+    p.style.width = `20px`;
+    p.style.height = `20px`;
+    p.style.borderRadius = `50%`;
+    p.style.position = "absolute";
+    p.style.left = (parentCanvas.getBoundingClientRect().width / 2 - 10) + "px";
+    p.style.top = (parentCanvas.getBoundingClientRect().height / 2 - 10) + "px";
+    p.style.backgroundColor = "rgb(200, 150, 255)";
+    p.style.opacity = "1";
+    let speedChange = 10;
+    let opacityChange = 0.1;
+    let colors = ["red", "blue", "green", "yellow", "purple", "orange", "cyan"];
+    let currentColorIndex = 0;
+
     /*** THIS IS THE CALLBACK FOR KEY DOWN ( DO NOT CHANGE THE NAME..) */
     windowKeyDownRef = function (e) {
       //code for key down in here
-      console.log(e)
+      console.log(e);
       //SAMPLE KEY CHECK (you do not have to use)
       if (e.code === "Space") {
-        console.log("team-space down")
+        console.log("team-space down");
+      }
+      if (e.key === "ArrowLeft") {
+        p.style.left = (parseInt(p.style.left) - speedChange) + "px";
+      } else if (e.key === "ArrowRight") {
+        p.style.left = (parseInt(p.style.left) + speedChange) + "px";
+      }
+      else if (e.key === "-") {
+        p.style.opacity = Math.max(0, parseFloat(p.style.opacity) - opacityChange);
+      }
+      else if (e.key === "+") {
+        p.style.opacity = Math.min(1, parseFloat(p.style.opacity) + opacityChange);
+      }
+      else if (e.key === "c" || e.key === "C") {
+        currentColorIndex = (currentColorIndex + 1) % colors.length;
+        p.style.backgroundColor = colors[currentColorIndex];
+        console.log("Color changed to:", colors[currentColorIndex]);
       }
     };
 
     /*** THIS IS THE CALLBACK FOR KEY UP ( DO NOT CHANGE THE NAME..) */
     windowKeyUpRef = function (e) {
-    //SAMPLE KEY CHECK (you do not have to use)
+      //SAMPLE KEY CHECK (you do not have to use)
       if (e.code === "Space") {
         console.log("space up");
-        console.log("team-space up")
+        console.log("team-space up");
       }
-
     };
 
     //DO NOT REMOVE
