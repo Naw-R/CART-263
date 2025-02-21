@@ -39,3 +39,16 @@ body{
     position:absolute;
     border-style:solid;
 }
+
+/* Bee style with stripes */
+.bee {
+    position: absolute;
+    background: linear-gradient(90deg, yellow 30%, black 30%, black 40%, yellow 40%, yellow 70%, black 70%);
+    border: 2px solid black;
+    /* Outline */
+    border-radius: 50%;
+    /* Circular shape */
+    width: 20px;
+    height: 20px;
+    transition: transform 0.1s linear;
+}

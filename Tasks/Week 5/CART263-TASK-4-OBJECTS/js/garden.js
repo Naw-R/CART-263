@@ -1,6 +1,6 @@
-window.onload = function (){
-// Our garden
-let garden = {
+window.onload = function () {
+  // Our garden
+  let garden = {
     // An array to store the individual flowers
     flowers: [],
     // How many flowers in the garden
@@ -16,7 +16,7 @@ let garden = {
       //the grass element
       grassDiv: document.createElement("div"),
     },
- 
+
     /*sky object */
     sky: {
       // The color of the sky (background)
@@ -28,9 +28,14 @@ let garden = {
       //the sky element
       skyDiv: document.createElement("div"),
     },
+
+    /*bee object */
+    bees: [], // NEW ARRAY FOR BEES
+    numBees: 5, // How many bees we want
+
   };
   // new  sun instancce
-  let sun =  new Sun(10,10,{r: 240, g: 206,b: 83})
+  let sun = new Sun(10, 10, { r: 240, g: 206, b: 83 })
 
   function createAndRenderTheGarden() {
     /* note how we use dot notation....*/
@@ -48,37 +53,57 @@ let garden = {
 
     //create some flowers
     for (let i = 0; i < garden.numFlowers; i++) {
-        // Create variables for our arguments for clarity
-        let x = Math.random() * (window.innerWidth);
-        let y = Math.random() * 120;
-        let size = Math.random() * 30 + 10;
-        let stemLength = Math.random() * 50 + 20;
-        let petalColor = {
-          r: parseInt(Math.random() * 155) + 100,
-          g: parseInt(Math.random() * 155) + 100,
-          b: parseInt(Math.random() * 155) + 100,
-        };
-  
-        // Create a new flower using the arguments
-        let flower = new Flower(x, y, size, stemLength, petalColor);
-        // Add the flower to the array of flowers
-        garden.flowers.push(flower);
-      }
+      // Create variables for our arguments for clarity
+      let x = Math.random() * (window.innerWidth);
+      let y = Math.random() * 120;
+      let size = Math.random() * 30 + 10;
+      let stemLength = Math.random() * 50 + 20;
+      let petalColor = {
+        r: parseInt(Math.random() * 155) + 100,
+        g: parseInt(Math.random() * 155) + 100,
+        b: parseInt(Math.random() * 155) + 100,
+      };
 
-      for (let i = 0; i < garden.numFlowers; i++) {
-        // Add the flower to the array of flowers
-        garden.flowers[i].renderFlower();
-      }
+      // Create a new flower using the arguments
+      let flower = new Flower(x, y, size, stemLength, petalColor);
+      // Add the flower to the array of flowers
+      garden.flowers.push(flower);
+    }
+
+    for (let i = 0; i < garden.numFlowers; i++) {
+      // Add the flower to the array of flowers
+      garden.flowers[i].renderFlower();
+    }
+
+    // create some bees
+    for (let i = 0; i < garden.numBees; i++) {
+      let x = Math.random() * window.innerWidth;
+      let y = Math.random() * (window.innerHeight - 280); // Keep bees in the grass area
+      let size = Math.random() * 20 + 10; // Bees should be small
+      let color = {
+        r: 255, // Yellow Bees
+        g: 200,
+        b: 0
+      };
+
+      let bee = new Bee(x, y, size, color);
+      garden.bees.push(bee);
+    }
+
+    // render and animate the bees
+    for (let i = 0; i < garden.numBees; i++) {
+      garden.bees[i].renderBee();
+      garden.bees[i].animateBee();
+    }
+
   }
   createAndRenderTheGarden();
   window.addEventListener("keydown", function handleKeyDown(event) {
-  //call the handleKeyDown method of class
-  sun.handleKeyDownInSUn(event);
-});
+    //call the handleKeyDown method of class
+    sun.handleKeyDownInSUn(event);
+  });
 
 }
-
-  
 
 /**TEAM A -- BEES
  * 1/ Create a  file to hold a  Bee Class (i.e. Bee.js)
@@ -90,6 +115,7 @@ let garden = {
  * all different sizes and colors and in different positions and then call the animateBee() method on all the Bees
  * 
 */
+
 
 /**TEAM B -- SQUIRRELS
  * 1/ Create a  file to hold a  Squirrel Class (i.e. Squirrel.js)
@@ -143,7 +169,6 @@ let garden = {
  * 4/ Add a key event listener (in garden.js) such that when the the return Key is pressed - a new bird will be added to the garden.
  * 5/ Create an animateBird() method in the Bird class - which will make a given Bird move around the sky - use the requestAnimationFrame() 
  * 6/ In garden.js add an empty array for the birds
- * 
  * 
 */
 
