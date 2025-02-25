@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Emoji</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+
+    <!-- 🌟 MENU STATE: Category Selection -->
+    <div id="menu-screen" class="screen">
+        <h1>Guess the Emoji!</h1>
+        <p>Select a category:</p>
+        <select id="category-select">
+            <option value="books">Books</option>
+            <option value="brands">Brands</option>
+            <option value="countries">Countries</option>
+            <option value="movies">Movies</option>
+            <option value="songs">Songs</option>
+            <option value="tv">TV Shows</option>
+        </select>
+        <button id="start-menu-btn">Next</button>
+    </div>
+
+    <!-- 🚀 LOBBY STATE: Confirm Selection & Start Game -->
+    <div id="lobby-screen" class="screen hidden">
+        <h2>Category Selected:</h2>
+        <p id="selected-category">[Category Name]</p>
+        <button id="start-game-btn">Start Game</button>
+        <button id="return-menu-btn">Return</button>
+        <div id="timer">⏳ Time: 30s</div>
+        <div id="score">⭐ Score: 0</div>
+    </div>
+
+    <!-- 🎮 IN-GAME STATE: Active Gameplay -->
+    <div id="game-screen" class="screen hidden">
+        <div id="emoji-display">🧐❓</div>
+        <input type="text" id="user-input" placeholder="Enter your guess">
+        <button id="submit-btn">Guess</button>
+        <button id="hint-btn">Hint</button>
+        <button id="exit-game-btn">Exit</button>
+        <div id="scoreboard">Score: <span id="game-score">0</span></div>
+        <div id="game-timer">Timer: <span id="game-time">30</span>s</div>
+    </div>
+
+    <!-- 📝 FEEDBACK SECTION (Hidden by default) -->
+    <div id="feedback-section" class="hidden">
+        <h3>Feedback</h3>
+        <textarea id="feedback-input" placeholder="What do you think about this emoji set?"></textarea>
+        <button id="submit-feedback-btn">Submit Feedback</button>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
