@@ -10,22 +10,21 @@
 
 <body>
 
-    <!-- 🌟 MENU STATE: Category Selection -->
+    <!-- MENU STATE: Category Selection -->
     <div id="menu-screen" class="screen">
         <h1>Guess the Emoji!</h1>
         <p>Select a category:</p>
-        <select id="category-select">
-            <option value="books">Books</option>
-            <option value="brands">Brands</option>
-            <option value="countries">Countries</option>
-            <option value="movies">Movies</option>
-            <option value="songs">Songs</option>
-            <option value="tv">TV Shows</option>
-        </select>
-        <button id="start-menu-btn">Next</button>
+        <div id="category-buttons">
+            <button class="category-btn" data-category="movies">Movies</button>
+            <button class="category-btn" data-category="songs">Songs</button>
+            <button class="category-btn" data-category="books">Books</button>
+            <button class="category-btn" data-category="tv">TV Shows</button>
+            <button class="category-btn" data-category="countries">Countries</button>
+            <button class="category-btn" data-category="brands">Brands</button>
+        </div>
     </div>
 
-    <!-- 🚀 LOBBY STATE: Confirm Selection & Start Game -->
+    <!-- LOBBY STATE: Confirm Selection & Start Game -->
     <div id="lobby-screen" class="screen hidden">
         <h2>Category Selected:</h2>
         <p id="selected-category">[Category Name]</p>
@@ -35,7 +34,7 @@
         <div id="score">⭐ Score: 0</div>
     </div>
 
-    <!-- 🎮 IN-GAME STATE: Active Gameplay -->
+    <!-- IN-GAME STATE: Active Gameplay -->
     <div id="game-screen" class="screen hidden">
         <div id="emoji-display">🧐❓</div>
         <input type="text" id="user-input" placeholder="Enter your guess">
@@ -46,14 +45,21 @@
         <div id="game-timer">Timer: <span id="game-time">30</span>s</div>
     </div>
 
-    <!-- 📝 FEEDBACK SECTION (Hidden by default) -->
+    <!-- FEEDBACK SECTION (Hidden by default) -->
     <div id="feedback-section" class="hidden">
         <h3>Feedback</h3>
         <textarea id="feedback-input" placeholder="What do you think about this emoji set?"></textarea>
         <button id="submit-feedback-btn">Submit Feedback</button>
     </div>
 
+    <!-- Running Scripts -->
+    <script src="js/stateManager.js"></script> <!-- Must load first -->
     <script src="js/script.js"></script>
+    <script src="js/gameLogic.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/feedback.js"></script>
+
 </body>
 
 </html>
